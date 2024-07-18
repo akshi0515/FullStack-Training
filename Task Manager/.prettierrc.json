@@ -1,0 +1,8 @@
+{
+    "semi": true,
+    "tabWidth": 2,
+    "endOfLine": "lf",
+    "printWidth": 140,
+    "bracketSpacing": true,
+    "parser": "typescript"
+}
