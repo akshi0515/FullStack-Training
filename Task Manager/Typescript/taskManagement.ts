@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
     const listItems = data.map((task: Task): HTMLLIElement => {
       const li = document.createElement("li");
       li.dataset.taskId = task.id;
-      const statusClass = task.status ? "Complete" : "InComplete";
+      const status = task.status ? "Complete" : "InComplete";
       const statusButtonClass = task.status ? "completeButton" : "inCompleteButton";
       const statusIcon = task.status ? "fa-solid fa-check" : "fa-regular fa-circle";
       const taskDescriptionClass = task.status ? "completedTask" : "inCompleteTask";
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
                     </div>
                     <div class="task-status">
                       <p class="title">Status:</p>
-                      <p class="${statusClass}">${statusClass}</p>
+                      <p class="${status}">${status}</p>
                     </div>
                     <button class="edit" ${task.status ? "disabled" : ""}>
                       <i class="fa-solid fa-pen-to-square"></i>
