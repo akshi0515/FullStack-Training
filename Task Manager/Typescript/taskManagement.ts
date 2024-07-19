@@ -16,11 +16,12 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
       const statusClass = task.status ? "Complete" : "InComplete";
       const statusButtonClass = task.status ? "completeButton" : "inCompleteButton";
       const statusIcon = task.status ? "fa-solid fa-check" : "fa-regular fa-circle";
+      const taskDescriptionClass = task.status ? "completedTask" : "inCompleteTask";
       li.innerHTML = `
                   <div class="task">
                     <div class="task-description">
                       <p class="title">Task:</p>
-                      <p class="${task.status ? "completed-task" : "incomplete-task"}">${task.description}</p>
+                      <p class="${taskDescriptionClass}">${task.description}</p>
                     </div>
                     <div class="task-status">
                       <p class="title">Status:</p>

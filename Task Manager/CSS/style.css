@@ -106,7 +106,7 @@ p {
 	word-wrap: break-word;
 }
 
-.task-description p.completed-task {
+.task-description p.completedTask {
 	text-decoration: line-through;
 	color: #808080;
 }
