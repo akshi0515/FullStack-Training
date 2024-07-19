@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
       const li = document.createElement("li");
       li.dataset.taskId = task.id;
       const statusClass = task.status ? "Complete" : "InComplete";
-      const statusButtonClass = task.status ? "completed" : "mark-complete";
+      const statusButtonClass = task.status ? "completeButton" : "inCompleteButton";
       const statusIcon = task.status ? "fa-solid fa-check" : "fa-regular fa-circle";
       li.innerHTML = `
                   <div class="task">
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
                     </div>
                     <div class="task-status">
                       <p class="title">Status:</p>
-                      <p class="${statusClass.toLowerCase()}">${statusClass}</p>
+                      <p class="${statusClass}">${statusClass}</p>
                     </div>
                     <button class="edit" ${task.status ? "disabled" : ""}>
                       <i class="fa-solid fa-pen-to-square"></i>
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
 
   const addEventListeners = (): void => {
     const editButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".edit");
-    const statusButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".mark-complete, .completed");
+    const statusButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".completeButton, .inCompleteButton");
     const deleteButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(".delete");
 
     editButtons.forEach((button: HTMLButtonElement): void => {
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
     const taskId = taskLi.dataset.taskId;
     const description = descriptionElement.textContent as string;
 
-    if (button.classList.contains("mark-complete")) {
+    if (button.classList.contains("inCompleteButton")) {
       apiRequest("PUT", { id: taskId, status: true, description: description })
         .then(async (): Promise<void> => {
           await renderData(selectedFilter);

@@ -122,15 +122,15 @@ p {
 	color: #808080;
 }
 
-.incomplete {
+.InComplete {
 	color: #ff0000;
 }
 
-.complete {
+.Complete {
 	color: #008000;
 }
 
-.completed {
+.completeButton {
 	color: #4cae4c;
 }
 

@@ -12,9 +12,9 @@ export const checkDuplicateDescription = async (description: string, taskId?: st
 };
 
 export const sortTasksAlphabetically = (tasks: Task[]): Task[] => {
-  return tasks.sort((a: Task, b: Task): number => {
-    const descriptionA = a.description?.toLowerCase() ?? "";
-    const descriptionB = b.description?.toLowerCase() ?? "";
-    return descriptionA.localeCompare(descriptionB);
+  return tasks.sort((taskOne: Task, taskTwo: Task): number => {
+    const descriptionOne = taskOne.description?.toLowerCase() ?? "";
+    const descriptionTwo = taskTwo.description?.toLowerCase() ?? "";
+    return descriptionOne.localeCompare(descriptionTwo);
   });
 };
