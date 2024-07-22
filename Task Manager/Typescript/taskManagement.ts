@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
         await apiRequest("PUT", {
           id: taskId,
           status: currentStatus,
-          description: newDescription,
+          description: newDescription
         });
         await renderData(selectedFilter);
       } catch (error) {
@@ -157,12 +157,12 @@ document.addEventListener("DOMContentLoaded", async (): Promise<void> => {
 
   const filterTasks = (tasks: Task[], filter: string): Task[] => {
     switch (filter) {
-    case "incomplete":
-      return tasks.filter((task: Task): boolean => !task.status);
-    case "completed":
-      return tasks.filter((task: Task): boolean => !!task.status);
-    default:
-      return tasks;
+      case "incomplete":
+        return tasks.filter((task: Task): boolean => !task.status);
+      case "completed":
+        return tasks.filter((task: Task): boolean => !!task.status);
+      default:
+        return tasks;
     }
   };
 
