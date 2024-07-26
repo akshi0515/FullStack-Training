@@ -1,0 +1,175 @@
+@media (max-width: 600px) {
+  #task-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #task-form {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  #filter-select {
+    width: 100%;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+  color: #333333;
+}
+
+p {
+  padding-bottom: 5px;
+  margin: 0px;
+}
+
+#task-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#task-form {
+  flex-grow: 1;
+  display: flex;
+  margin-right: 10px;
+}
+
+#task-input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #dddddd;
+  border-radius: 4px 0 0 4px;
+}
+
+#filter-select {
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-size: 16px;
+}
+
+#filter-select:focus {
+  outline: none;
+  border-color: #5bec9c;
+}
+
+#task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#task-input:focus {
+  outline: none;
+  border-color: #5bec9c;
+}
+
+#task-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #5cb85c;
+  color: #ffffff;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+#task-form button:hover {
+  background-color: #4cae4c;
+}
+
+.container {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #1a1a1a1a;
+}
+
+.edit-input:focus {
+  outline: none;
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 10px;
+  margin-bottom: 15px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+}
+
+.task-description {
+  margin-left: 5px;
+  width: 40%;
+  word-wrap: break-word;
+}
+
+.task-description p.completedTask {
+  text-decoration: line-through;
+  color: #808080;
+}
+
+.task-status {
+  padding: 0 10px;
+  margin-right: 5px;
+  width: 10%;
+}
+
+.title {
+  font-size: 14px;
+  color: #808080;
+}
+
+.InComplete {
+  color: #ff0000;
+}
+
+.Complete {
+  color: #008000;
+}
+
+.completeButton {
+  color: #4cae4c;
+}
+
+.task button {
+  margin-left: 5px;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.task button:hover {
+  color: #007bff;
+}
+
+.task button i {
+  font-size: 18px;
+}
+
+.delete i {
+  color: #ff0000;
+}
+
+.delete i:hover {
+  color: #cc0606;
+}
