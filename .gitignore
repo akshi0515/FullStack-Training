@@ -1,3 +1,4 @@
-Task Manager/node_modules/
-Task Manager/package-lock.json
-*.js
+node_modules/
+package-lock.json
+Javascript
+Task Manager/*/*.js
