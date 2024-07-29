@@ -14,7 +14,12 @@
         }
     },
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "off",
+            {
+                "endOfLine": "auto"
+            }
+        ],
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "no-console": "warn",
