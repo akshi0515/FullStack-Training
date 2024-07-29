@@ -9,7 +9,7 @@ const AnalogClock: React.FC<AnalogClockProps> = ({ currentTime, timezone }: Anal
     const localTime = moment(currentTime).tz(timezone);
     const seconds = localTime.seconds() * 6;
     const minutes = localTime.minutes() * 6;
-    const hours = (localTime.hours() % 12) * 30 + minutes / 12;
+    const hours = (localTime.hours() % 12) * 30 + localTime.minutes() * 0.5;
     return { seconds, minutes, hours };
   }, [currentTime, timezone]);
 
