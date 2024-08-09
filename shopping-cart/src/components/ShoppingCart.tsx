@@ -37,7 +37,7 @@ const ShoppingCart: React.FC = () => {
     if (cartItems.length) return cartItems.reduce((total, item): number => total + item.price * item.quantity, 0);
     else return 0;
   }, [cartItems]);
-  
+
   const discount = 0;
   const total = subtotal - discount;
 

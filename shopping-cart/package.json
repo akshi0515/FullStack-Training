@@ -37,7 +37,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"  --max-warnings=0",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\" ",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\" .prettierrc.json",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "prepare": "husky"
   },
   "lint-staged": {
