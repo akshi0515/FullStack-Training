@@ -19,66 +19,66 @@ const fetchCartFailure = (errorMessage: string): FetchCartFailureAction => ({
 
 export const fetchCartItems =
   () =>
-    (dispatch: AppDispatch): void => {
-      dispatch(fetchCartRequest);
-      axios
-        .get("https://668d06cd099db4c579f16a16.mockapi.io/Cart")
-        .then((response): void => {
-          const items = response.data;
-          dispatch(fetchCartSuccess(items));
-        })
-        .catch((error): void => {
-          const errorMessage = error.message;
-          dispatch(fetchCartFailure(errorMessage));
-        });
-    };
+  (dispatch: AppDispatch): void => {
+    dispatch(fetchCartRequest);
+    axios
+      .get("https://668d06cd099db4c579f16a16.mockapi.io/Cart")
+      .then((response): void => {
+        const items = response.data;
+        dispatch(fetchCartSuccess(items));
+      })
+      .catch((error): void => {
+        const errorMessage = error.message;
+        dispatch(fetchCartFailure(errorMessage));
+      });
+  };
 
 export const addToCart =
   (product: Product) =>
-    (dispatch: AppDispatch): void => {
-      dispatch(fetchCartRequest);
-      axios
-        .post("https://668d06cd099db4c579f16a16.mockapi.io/Cart", product)
-        .then((response): void => {
-          const items = response.data;
-          dispatch(fetchCartSuccess(items));
-        })
-        .catch((error): void => {
-          const errorMessage = error.message;
-          dispatch(fetchCartFailure(errorMessage));
-        });
-    };
+  (dispatch: AppDispatch): void => {
+    dispatch(fetchCartRequest);
+    axios
+      .post("https://668d06cd099db4c579f16a16.mockapi.io/Cart", product)
+      .then((response): void => {
+        const items = response.data;
+        dispatch(fetchCartSuccess(items));
+      })
+      .catch((error): void => {
+        const errorMessage = error.message;
+        dispatch(fetchCartFailure(errorMessage));
+      });
+  };
 
 export const removeFromCart =
   (id: number) =>
-    (dispatch: AppDispatch): void => {
-      dispatch(fetchCartRequest);
-      axios
-        .delete(`https://668d06cd099db4c579f16a16.mockapi.io/Cart/${id}`)
-        .then((response): void => {
-          const items = response.data;
-          dispatch(fetchCartSuccess(items));
-        })
-        .catch((error): void => {
-          const errorMessage = error.message;
-          dispatch(fetchCartFailure(errorMessage));
-        });
-    };
+  (dispatch: AppDispatch): void => {
+    dispatch(fetchCartRequest);
+    axios
+      .delete(`https://668d06cd099db4c579f16a16.mockapi.io/Cart/${id}`)
+      .then((response): void => {
+        const items = response.data;
+        dispatch(fetchCartSuccess(items));
+      })
+      .catch((error): void => {
+        const errorMessage = error.message;
+        dispatch(fetchCartFailure(errorMessage));
+      });
+  };
 
 export const updateQuantity =
   (id: number, quantity: number) =>
-    (dispatch: AppDispatch): void => {
-      dispatch(fetchCartRequest);
-      axios
-        .put(`https://668d06cd099db4c579f16a16.mockapi.io/Cart/${id}`, {
-          quantity: quantity
-        })
-        .then((response): void => {
-          const items = response.data;
-          dispatch(fetchCartSuccess(items));
-        })
-        .catch((error): void => {
-          const errorMessage = error.message;
-          dispatch(fetchCartFailure(errorMessage));
-        });
-    };
+  (dispatch: AppDispatch): void => {
+    dispatch(fetchCartRequest);
+    axios
+      .put(`https://668d06cd099db4c579f16a16.mockapi.io/Cart/${id}`, {
+        quantity: quantity
+      })
+      .then((response): void => {
+        const items = response.data;
+        dispatch(fetchCartSuccess(items));
+      })
+      .catch((error): void => {
+        const errorMessage = error.message;
+        dispatch(fetchCartFailure(errorMessage));
+      });
+  };

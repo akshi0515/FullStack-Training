@@ -8,9 +8,9 @@ export const StyledHeader = styled.header`
   right: 0;
   z-index: 1;
   background-color: #423e3e;
-  color: #fff;
+  color: #ffffff;
   padding: 0.5rem 2rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px #0000001a;
 `;
 
 export const HeaderWrapper = styled.div`
@@ -24,7 +24,7 @@ export const HeaderWrapper = styled.div`
 export const StyledLogo = styled(Link)`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -58,7 +58,7 @@ export const NavigationLinks = styled.div`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin-left: 1rem;
@@ -92,7 +92,7 @@ export const MobileMenuButton = styled.button`
   display: none;
   background: none;
   border: none;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.5rem;
   cursor: pointer;
 

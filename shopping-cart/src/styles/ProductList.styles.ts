@@ -5,7 +5,7 @@ export const ProductListContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
   margin: 50px auto;
-  max-width: 1200px;
+  max-width: 90%;
   padding: 0 20px;
 `;
 
@@ -14,11 +14,11 @@ export const ProductCard = styled.div`
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px #0000001a;
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 20px #00000026;
   }
 `;
 
@@ -36,7 +36,7 @@ export const ProductInfo = styled.div`
 export const ProductTitle = styled.h3`
   font-size: 18px;
   margin: 0 0 10px;
-  color: #333;
+  color: #333333;
 `;
 
 export const ProductPrice = styled.p`
@@ -48,7 +48,7 @@ export const ProductPrice = styled.p`
 
 export const ProductDescription = styled.p`
   font-size: 14px;
-  color: #666;
+  color: #666666;
   margin-bottom: 15px;
 `;
 
@@ -59,14 +59,14 @@ export const Rating = styled.div`
 
   span {
     margin-left: 5px;
-    color: #666;
+    color: #666666;
     font-size: 14px;
   }
 `;
 
 export const AddToCartButton = styled.button`
   background-color: #4caf50;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 10px 15px;
   cursor: pointer;
@@ -91,7 +91,7 @@ export const Popup = styled.div`
   left: 50%;
   transform: translateX(-50%);
   background-color: #4caf50;
-  color: white;
+  color: #ffffff;
   padding: 15px 20px;
   border-radius: 4px;
   z-index: 1000;

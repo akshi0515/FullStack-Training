@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
-  border: 1px solid #ddd;
+  border: 1px solid #dddddd;
   padding: 20px;
   margin-top: 80px;
-  background-color: #fff;
-  color: #333;
+  background-color: #ffffff;
+  color: #333333;
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -38,7 +38,7 @@ export const CartTable = styled.table`
   td {
     padding: 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd;
   }
 
   th {
@@ -63,7 +63,7 @@ export const QuantityControl = styled.div`
 
 export const QuantityButton = styled.button`
   background-color: #494d49;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -104,7 +104,7 @@ export const CartTotals = styled.div`
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px #0000001a;
   align-self: flex-start;
 
   @media (max-width: 768px) {
@@ -114,7 +114,7 @@ export const CartTotals = styled.div`
 
   h3 {
     margin-bottom: 15px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd;
     padding-bottom: 10px;
   }
 
@@ -128,7 +128,7 @@ export const CartTotals = styled.div`
     font-weight: bold;
     font-size: 1.1em;
     margin-top: 10px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #dddddd;
     padding-top: 10px;
   }
 `;
@@ -136,7 +136,7 @@ export const CartTotals = styled.div`
 export const EmptyCartMessage = styled.div`
   text-align: center;
   padding: 50px;
-  color: #888;
+  color: #888888;
   width: 90%;
 
   svg {
@@ -153,7 +153,7 @@ export const CheckoutButton = styled.button`
   padding: 10px;
   margin-top: 15px;
   background-color: #4caf50;
-  color: white;
+  color: #ffffff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
