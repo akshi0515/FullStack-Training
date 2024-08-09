@@ -34,8 +34,7 @@ const ProductList: React.FC = () => {
         const fetchedProducts = await fetchProducts();
         setProducts(fetchedProducts);
       } catch (error) {
-        console.error("Error fetching products:", error);
-        setError("404: Error fetching products");
+        setError("404: Error fetching products" + error);
       } finally {
         setIsLoading(false);
       }
