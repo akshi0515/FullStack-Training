@@ -9,25 +9,25 @@ const initialCartState: CartState = {
 
 const cartReducer = (state = initialCartState, action: CartActionTypes): CartState => {
   switch (action.type) {
-  case FETCH_CART_REQUEST:
-    return {
-      ...state,
-      loading: true
-    };
-  case FETCH_CART_SUCCESS:
-    return {
-      ...state,
-      loading: false,
-      items: action.payload
-    };
-  case FETCH_CART_FAILURE:
-    return {
-      ...state,
-      loading: false,
-      error: action.payload
-    };
-  default:
-    return state;
+    case FETCH_CART_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case FETCH_CART_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        items: action.payload
+      };
+    case FETCH_CART_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    default:
+      return state;
   }
 };
 
