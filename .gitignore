@@ -1,4 +1,7 @@
-node_modules/
-package-lock.json
-Javascript
-Task Manager/*/*.js
+Task Manager/node_modules/
+Task Manager/package-lock.json
+*.js
+/node_modules
+world-clock/node_modules
+world-clock/package-lock.json
+/package-lock.json
