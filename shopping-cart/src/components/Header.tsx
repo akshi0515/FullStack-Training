@@ -27,10 +27,9 @@ const Header: React.FC = () => {
       setIsMobile(window.innerWidth <= 768);
     };
     dispatch(fetchCartItems());
-
     window.addEventListener("resize", handleResize);
     return (): void => window.removeEventListener("resize", handleResize);
-  }, [dispatch, cartItems]);
+  }, []);
 
   const toggleMenu = (): void => {
     if (isMobile) {

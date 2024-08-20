@@ -9,7 +9,8 @@ import {
   ProductPrice,
   ProductDescription,
   Rating,
-  Popup
+  Popup,
+  DescriptionLink
 } from "../styles/ProductList.styles";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +18,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/useTypedSelector";
 import { fetchProducts } from "../apis/productApi";
 import { CartItem, Product } from "../interfaces";
 import { RootState } from "../store";
-import { fetchCartItems, addToCart } from "../store/actions/cartAction";
+import { addToCart, fetchCartItems } from "../store/actions/cartAction";
 
 const ProductList: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -39,10 +40,9 @@ const ProductList: React.FC = () => {
         setIsLoading(false);
       }
     };
-
     loadProducts();
     dispatch(fetchCartItems());
-  }, [dispatch, cartItems]);
+  }, []);
 
   const handleAddToCart = (product: Product): void => {
     const item = {
@@ -87,7 +87,10 @@ const ProductList: React.FC = () => {
                   <span>({product.rating.count})</span>
                 </Rating>
                 <ProductPrice>Rs {product.price.toFixed(2)}</ProductPrice>
-                <ProductDescription>{product.description.slice(0, 100)}...</ProductDescription>
+                <ProductDescription>
+                  {product.description.slice(0, 80)}...
+                  <DescriptionLink to={`/product/${product.id}`}>Read More</DescriptionLink>
+                </ProductDescription>
                 <AddToCartButton onClick={(): void => handleCartButtonClick(product)}>
                   {isProductInCart(product.id) ? "Go to Cart" : "Add to Cart"}
                 </AddToCartButton>

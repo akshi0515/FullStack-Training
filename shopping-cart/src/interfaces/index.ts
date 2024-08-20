@@ -1,4 +1,4 @@
-import { FETCH_CART_REQUEST, FETCH_CART_SUCCESS, FETCH_CART_FAILURE } from "../store/actionTypes";
+import { FETCH_CART_REQUEST, FETCH_CART_SUCCESS, FETCH_CART_FAILURE, UPDATE_CART_ITEMS } from "../store/actionTypes";
 
 interface Rating {
   rate: number;
@@ -37,4 +37,9 @@ export interface FetchCartSuccessAction {
 export interface FetchCartFailureAction {
   type: typeof FETCH_CART_FAILURE;
   payload: string;
+}
+
+export interface UpdateCartItem {
+  type: typeof UPDATE_CART_ITEMS;
+  payload: CartItem[];
 }

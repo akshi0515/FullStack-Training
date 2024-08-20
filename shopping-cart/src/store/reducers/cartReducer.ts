@@ -1,5 +1,5 @@
 import { CartItem, CartState } from "../../interfaces";
-import { CartActionTypes, FETCH_CART_REQUEST, FETCH_CART_SUCCESS, FETCH_CART_FAILURE } from "../actionTypes";
+import { CartActionTypes, FETCH_CART_REQUEST, FETCH_CART_SUCCESS, FETCH_CART_FAILURE, UPDATE_CART_ITEMS } from "../actionTypes";
 
 const initialCartState: CartState = {
   loading: false,
@@ -25,6 +25,13 @@ const cartReducer = (state = initialCartState, action: CartActionTypes): CartSta
         ...state,
         loading: false,
         error: action.payload
+      };
+    case UPDATE_CART_ITEMS:
+      return {
+        ...state,
+        loading: false,
+        error: "",
+        items: action.payload
       };
     default:
       return state;

@@ -15,21 +15,21 @@ import {
   CartTableWrapper
 } from "../styles/ShoppingCart.styles";
 import { CartState, CartItem } from "../interfaces";
-import { fetchCartItems, updateQuantity, removeFromCart } from "../store/actions/cartAction";
+import { updateQuantity, removeFromCart, fetchCartItems } from "../store/actions/cartAction";
 
 const ShoppingCart: React.FC = () => {
   const cartItems = useAppSelector((state: CartState): CartItem[] => state.items);
   const dispatch = useAppDispatch();
 
-  useEffect((): void => {
+  useEffect(() => {
     dispatch(fetchCartItems());
-  }, [dispatch, cartItems]);
+  }, []);
 
-  const handleQuantityChange = (id: number, newQuantity: number): void => {
+  const handleQuantityChange = (i: number, id: number, newQuantity: number): void => {
     if (newQuantity > 0) {
-      dispatch(updateQuantity(id, newQuantity));
+      dispatch(updateQuantity(i, id, newQuantity));
     } else {
-      dispatch(removeFromCart(id));
+      dispatch(removeFromCart(i, id));
     }
   };
 
@@ -63,31 +63,30 @@ const ShoppingCart: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {cartItems.length &&
-                  cartItems.map(
-                    (item): JSX.Element => (
-                      <tr key={item.id}>
-                        <td>
-                          <ProductImage src={item.image} alt={item.title} />
-                        </td>
-                        <td>{item.title}</td>
-                        <td>Rs {item.price.toFixed(2)}</td>
-                        <td>
-                          <QuantityControl>
-                            <QuantityButton onClick={(): void => handleQuantityChange(item.i, item.quantity - 1)}>-</QuantityButton>
-                            <span>{item.quantity}</span>
-                            <QuantityButton onClick={(): void => handleQuantityChange(item.i, item.quantity + 1)}>+</QuantityButton>
-                          </QuantityControl>
-                        </td>
-                        <td>Rs {(item.price * item.quantity).toFixed(2)}</td>
-                        <td>
-                          <RemoveButton onClick={(): void => dispatch(removeFromCart(item.i))}>
-                            <MdCancel />
-                          </RemoveButton>
-                        </td>
-                      </tr>
-                    )
-                  )}
+                {cartItems.map(
+                  (item): JSX.Element => (
+                    <tr key={item.id}>
+                      <td>
+                        <ProductImage src={item.image} alt={item.title} />
+                      </td>
+                      <td>{item.title}</td>
+                      <td>Rs {item.price.toFixed(2)}</td>
+                      <td>
+                        <QuantityControl>
+                          <QuantityButton onClick={(): void => handleQuantityChange(item.i, item.id, item.quantity - 1)}>-</QuantityButton>
+                          <span>{item.quantity}</span>
+                          <QuantityButton onClick={(): void => handleQuantityChange(item.i, item.id, item.quantity + 1)}>+</QuantityButton>
+                        </QuantityControl>
+                      </td>
+                      <td>Rs {(item.price * item.quantity).toFixed(2)}</td>
+                      <td>
+                        <RemoveButton onClick={(): void => dispatch(removeFromCart(item.i, item.id))}>
+                          <MdCancel />
+                        </RemoveButton>
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
             </CartTable>
           </CartTableWrapper>

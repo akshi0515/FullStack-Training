@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 export const ProductListContainer = styled.div`
@@ -37,6 +38,7 @@ export const ProductTitle = styled.h3`
   font-size: 18px;
   margin: 0 0 10px;
   color: #333333;
+  min-height: 40px;
 `;
 
 export const ProductPrice = styled.p`
@@ -50,6 +52,18 @@ export const ProductDescription = styled.p`
   font-size: 14px;
   color: #666666;
   margin-bottom: 15px;
+  min-height: 50px;
+
+`;
+
+export const DescriptionLink = styled(Link)`
+  color: #007bff; 
+  text-decoration: none;
+  
+  &:hover {
+    color: #0056b3; 
+    text-decoration: none; 
+  }
 `;
 
 export const Rating = styled.div`
