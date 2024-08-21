@@ -16,27 +16,25 @@ import {
 } from "../styles/ShoppingCart.styles";
 import { CartState, CartItem } from "../interfaces";
 import { updateQuantity, removeFromCart, fetchCartItems } from "../store/actions/cartAction";
+import { Currency } from "../assets/Currency";
 
 const ShoppingCart: React.FC = () => {
   const cartItems = useAppSelector((state: CartState): CartItem[] => state.items);
   const dispatch = useAppDispatch();
+  const tableHeaders = ["Image", "Product", "Price", "Quantity", "Total"];
 
   useEffect(() => {
     dispatch(fetchCartItems());
   }, []);
 
-  const handleQuantityChange = (i: number, id: number, newQuantity: number): void => {
-    if (newQuantity > 0) {
-      dispatch(updateQuantity(i, id, newQuantity));
-    } else {
-      dispatch(removeFromCart(i, id));
-    }
+  const handleQuantityChange = (index: number, id: number, newQuantity: number): void => {
+    dispatch(newQuantity > 0 ? updateQuantity(index, id, newQuantity) : removeFromCart(index, id));
   };
 
-  const subtotal = useMemo((): number => {
-    if (cartItems.length) return cartItems.reduce((total, item): number => total + item.price * item.quantity, 0);
-    else return 0;
-  }, [cartItems]);
+  const subtotal = useMemo(
+    (): number => (cartItems.length ? cartItems.reduce((total, item): number => total + item.price * item.quantity, 0) : 0),
+    [cartItems]
+  );
 
   const discount = 0;
   const total = subtotal - discount;
@@ -54,12 +52,9 @@ const ShoppingCart: React.FC = () => {
             <CartTable>
               <thead>
                 <tr>
-                  <th>Image</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th>Remove</th>
+                  {tableHeaders.map((tableHeader) => (
+                    <th key={tableHeader}>{tableHeader}</th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -70,17 +65,29 @@ const ShoppingCart: React.FC = () => {
                         <ProductImage src={item.image} alt={item.title} />
                       </td>
                       <td>{item.title}</td>
-                      <td>Rs {item.price.toFixed(2)}</td>
+                      <td>
+                        {Currency.Rupees} {item.price.toFixed(2)}
+                      </td>
                       <td>
                         <QuantityControl>
-                          <QuantityButton onClick={(): void => handleQuantityChange(item.i, item.id, item.quantity - 1)}>-</QuantityButton>
+                          <QuantityButton onClick={(): void => handleQuantityChange(item.index, item.id, item.quantity - 1)}>
+                            -
+                          </QuantityButton>
                           <span>{item.quantity}</span>
-                          <QuantityButton onClick={(): void => handleQuantityChange(item.i, item.id, item.quantity + 1)}>+</QuantityButton>
+                          <QuantityButton onClick={(): void => handleQuantityChange(item.index, item.id, item.quantity + 1)}>
+                            +
+                          </QuantityButton>
                         </QuantityControl>
                       </td>
-                      <td>Rs {(item.price * item.quantity).toFixed(2)}</td>
                       <td>
-                        <RemoveButton onClick={(): void => dispatch(removeFromCart(item.i, item.id))}>
+                        {Currency.Rupees} {(item.price * item.quantity).toFixed(2)}
+                      </td>
+                      <td>
+                        <RemoveButton
+                          onClick={(): void => {
+                            dispatch(removeFromCart(item.index, item.id));
+                          }}
+                        >
                           <MdCancel />
                         </RemoveButton>
                       </td>
@@ -95,15 +102,21 @@ const ShoppingCart: React.FC = () => {
           <h3>Cart Totals</h3>
           <div>
             <span>Subtotal:</span>
-            <span>Rs {subtotal.toFixed(2)}</span>
+            <span>
+              {Currency.Rupees} {subtotal.toFixed(2)}
+            </span>
           </div>
           <div>
             <span>Discount:</span>
-            <span>Rs {discount.toFixed(2)}</span>
+            <span>
+              {Currency.Rupees} {discount.toFixed(2)}
+            </span>
           </div>
           <div className="total">
             <span>Total:</span>
-            <span>Rs {total.toFixed(2)}</span>
+            <span>
+              {Currency.Rupees} {total.toFixed(2)}
+            </span>
           </div>
           <CheckoutButton>Proceed to Checkout</CheckoutButton>
         </CartTotals>

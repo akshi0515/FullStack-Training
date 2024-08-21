@@ -1,5 +1,8 @@
 {
     "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
@@ -33,7 +36,8 @@
             "error",
             "double"
         ],
-        "switch-colon-spacing": "off"
+        "switch-colon-spacing": "off",
+        "@typescript-eslint/no-duplicate-enum-values": "off"
     },
     "settings": {
         "react": {

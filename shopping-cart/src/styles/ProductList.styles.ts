@@ -53,16 +53,15 @@ export const ProductDescription = styled.p`
   color: #666666;
   margin-bottom: 15px;
   min-height: 50px;
-
 `;
 
 export const DescriptionLink = styled(Link)`
-  color: #007bff; 
+  color: #007bff;
   text-decoration: none;
-  
+
   &:hover {
-    color: #0056b3; 
-    text-decoration: none; 
+    color: #0056b3;
+    text-decoration: none;
   }
 `;
 

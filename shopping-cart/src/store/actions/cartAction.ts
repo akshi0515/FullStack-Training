@@ -61,10 +61,10 @@ export const addToCart =
   };
 
 export const removeFromCart =
-  (i: number, id: number) =>
+  (index: number, id: number) =>
   (dispatch: AppDispatch, getState: () => RootState): void => {
     axios
-      .delete(cartApi + `/${i}`)
+      .delete(cartApi + `/${index}`)
       .then((): void => {
         const updatedCartItems = getState().items.filter((item) => item.id !== id);
         dispatch(updateCartItem(updatedCartItems));
@@ -75,10 +75,10 @@ export const removeFromCart =
   };
 
 export const updateQuantity =
-  (i: number, id: number, quantity: number) =>
+  (index: number, id: number, quantity: number) =>
   (dispatch: AppDispatch, getState: () => RootState): void => {
     axios
-      .put(cartApi + `/${i}`, {
+      .put(cartApi + `/${index}`, {
         quantity: quantity
       })
       .then((): void => {

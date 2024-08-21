@@ -22,7 +22,7 @@ export interface Product {
 
 export interface CartItem extends Product {
   quantity: number;
-  i: number;
+  index: number;
 }
 
 export interface FetchCartRequestAction {

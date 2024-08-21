@@ -16,11 +16,13 @@ import { RootState } from "../store";
 import { fetchCartItems } from "../store/actions/cartAction";
 
 const Header: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 768);
   const cartItems = useAppSelector((state: RootState): CartItem[] => state.items);
   const cartItemCount = cartItems.length && cartItems.reduce((total, item): number => total + item.quantity, 0);
   const dispatch = useAppDispatch();
+  const routesArray = ["/", "/about", "/shops", "/contact"];
+  const headerTitle = ["Home", "About Us", "Shops", "Contact Us"];
 
   useEffect(() => {
     const handleResize = (): void => {
@@ -55,18 +57,11 @@ const Header: React.FC = () => {
         </MobileMenuButton>
         <Navigation isOpen={isMenuOpen} isMobile={isMobile}>
           <NavigationLinks>
-            <StyledNavLink to="/" onClick={handleLinkClick}>
-              Home
-            </StyledNavLink>
-            <StyledNavLink to="/about" onClick={handleLinkClick}>
-              About Us
-            </StyledNavLink>
-            <StyledNavLink to="/shops" onClick={handleLinkClick}>
-              Shops
-            </StyledNavLink>
-            <StyledNavLink to="/contact" onClick={handleLinkClick}>
-              Contact Us
-            </StyledNavLink>
+            {routesArray.map((route, index) => (
+              <StyledNavLink key={route} to={route} onClick={handleLinkClick}>
+                {headerTitle[index]}
+              </StyledNavLink>
+            ))}
             <StyledCartIcon to="/cart" onClick={handleLinkClick}>
               <FaShoppingCart />
               <span>{cartItemCount}</span>

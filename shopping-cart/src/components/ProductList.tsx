@@ -19,15 +19,16 @@ import { fetchProducts } from "../apis/productApi";
 import { CartItem, Product } from "../interfaces";
 import { RootState } from "../store";
 import { addToCart, fetchCartItems } from "../store/actions/cartAction";
+import { Currency } from "../assets/Currency";
 
 const ProductList: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const cartItems: CartItem[] = useAppSelector((state: RootState): CartItem[] => state.items);
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
   useEffect((): void => {
     const loadProducts = async (): Promise<void> => {
@@ -80,13 +81,15 @@ const ProductList: React.FC = () => {
                 <ProductTitle>{product.title}</ProductTitle>
                 <Rating>
                   {[...Array(5)].map(
-                    (_, i): JSX.Element => (
-                      <FaStar key={i} color={i < Math.round(product.rating.rate) ? "#ffc107" : "#e4e5e9"} />
+                    (_, index): JSX.Element => (
+                      <FaStar key={index} color={index < Math.round(product.rating.rate) ? "#ffc107" : "#e4e5e9"} />
                     )
                   )}
                   <span>({product.rating.count})</span>
                 </Rating>
-                <ProductPrice>Rs {product.price.toFixed(2)}</ProductPrice>
+                <ProductPrice>
+                  {Currency.Rupees} {product.price.toFixed(2)}
+                </ProductPrice>
                 <ProductDescription>
                   {product.description.slice(0, 80)}...
                   <DescriptionLink to={`/product/${product.id}`}>Read More</DescriptionLink>
