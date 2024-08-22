@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   AddToCartButton,
-  ProductCard,
   ProductImage,
   ProductListContainer,
   ProductInfo,
@@ -11,41 +10,34 @@ import {
   Rating,
   Popup,
   DescriptionLink,
-  Star
+  Star,
+  StyledToolTip,
+  ClickableProductCard
 } from "../styles/ProductList.styles";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/useTypedSelector";
 import { CartItem, Product } from "../interfaces";
 import { RootState } from "../store";
-import { fetchProducts } from "../api/productApi";
 import { fetchCartItems, addToCart } from "../store/slices/cartSlice";
 import { Currency } from "../assets/Currency";
+import { fetchProducts } from "../store/slices/productSlice";
 
 const ProductList: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const cartItems: CartItem[] = useAppSelector((state: RootState): CartItem[] => state.cart.items);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>("");
+  const products: Product[] = useAppSelector((state: RootState): Product[] => state.product.items);
+  const isLoading: boolean = useAppSelector((state: RootState): boolean => state.product.loading);
+  const error: string = useAppSelector((state: RootState): string => state.product.error);
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
   useEffect((): void => {
-    const loadProducts = async (): Promise<void> => {
-      try {
-        const fetchedProducts = await fetchProducts();
-        setProducts(fetchedProducts);
-      } catch (error) {
-        setError("404: Error fetching products" + error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    loadProducts();
+    dispatch(fetchProducts());
     dispatch(fetchCartItems());
   }, []);
 
-  const handleAddToCart = (product: Product): void => {
+  const handleAddToCart = (event: React.MouseEvent, product: Product): void => {
+    event.stopPropagation();
     const item = {
       ...product,
       quantity: 1
@@ -55,15 +47,22 @@ const ProductList: React.FC = () => {
     setTimeout((): void => setShowPopup(false), 2000);
   };
 
-  const isProductInCart = (productId: number) => cartItems.length && cartItems.some((item): boolean => item.id === productId);
+  const isProductInCart = (productId: number): boolean | 0 => cartItems.length && cartItems.some((item): boolean => item.id === productId);
 
-  const handleCartButtonClick = (product: Product): void => {
+  const handleCartButtonClick = (event: React.MouseEvent, product: Product): void => {
+    event.stopPropagation();
     if (isProductInCart(product.id)) {
       navigate("/cart");
     } else {
-      handleAddToCart(product);
+      handleAddToCart(event, product);
     }
   };
+
+  const handleProductClick = (productId: number): void => {
+    navigate(`/product/${productId}`);
+  };
+
+  const truncateTitle = (title: string): string => (title.length > 30 ? title.slice(0, 30) + "..." : title);
 
   return (
     <ProductListContainer>
@@ -75,10 +74,13 @@ const ProductList: React.FC = () => {
       ) : (
         products.map(
           (product): JSX.Element => (
-            <ProductCard key={product.id}>
+            <ClickableProductCard key={product.id} onClick={(): void => handleProductClick(product.id)}>
               <ProductImage src={product.image} alt={product.title} />
               <ProductInfo>
-                <ProductTitle>{product.title}</ProductTitle>
+                <ProductTitle data-tooltip-id={`tooltip-${product.id}`} data-tooltip-content={product.title}>
+                  {truncateTitle(product.title)}
+                </ProductTitle>
+                <StyledToolTip id={`tooltip-${product.id}`} />
                 <Rating>
                   {[...Array(5)].map(
                     (_, index): JSX.Element => (
@@ -92,13 +94,15 @@ const ProductList: React.FC = () => {
                 </ProductPrice>
                 <ProductDescription>
                   {product.description.slice(0, 80)}...
-                  <DescriptionLink to={`/product/${product.id}`}>Read More</DescriptionLink>
+                  <DescriptionLink to={`/product/${product.id}`} onClick={(e): void => e.stopPropagation()}>
+                    Read More
+                  </DescriptionLink>
                 </ProductDescription>
-                <AddToCartButton onClick={(): void => handleCartButtonClick(product)}>
+                <AddToCartButton onClick={(e): void => handleCartButtonClick(e, product)}>
                   {isProductInCart(product.id) ? "Go to Cart" : "Add to Cart"}
                 </AddToCartButton>
               </ProductInfo>
-            </ProductCard>
+            </ClickableProductCard>
           )
         )
       )}

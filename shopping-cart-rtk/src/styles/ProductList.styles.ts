@@ -1,5 +1,6 @@
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import styled, { keyframes } from "styled-components";
 
 export const ProductListContainer = styled.div`
@@ -38,7 +39,20 @@ export const ProductTitle = styled.h3`
   font-size: 18px;
   margin: 0 0 10px;
   color: #333333;
-  min-height: 40px;
+  min-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: top;
+  cursor: pointer;
+`;
+
+export const StyledToolTip = styled(Tooltip)`
+  max-width: 300px;
+  white-space: "normal";
+  word-break: "break-word";
 `;
 
 export const ProductPrice = styled.p`
@@ -110,4 +124,13 @@ export const Popup = styled.div`
 
 export const Star = styled(FaStar)<{ filled: boolean }>`
   color: ${(props) => (props.filled ? "#ffc107" : "#e4e5e9")};
+`;
+
+export const ClickableProductCard = styled(ProductCard)`
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;

@@ -57,7 +57,7 @@ const Header: React.FC = () => {
         </MobileMenuButton>
         <Navigation isOpen={isMenuOpen} isMobile={isMobile}>
           <NavigationLinks>
-            {routesArray.map((route, index) => (
+            {routesArray.map((route, index):JSX.Element => (
               <StyledNavLink key={route} to={route} onClick={handleLinkClick}>
                 {headerTitle[index]}
               </StyledNavLink>
