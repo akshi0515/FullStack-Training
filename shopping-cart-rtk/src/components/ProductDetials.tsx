@@ -31,7 +31,7 @@ const ProductDetails = () => {
   const error: string = useAppSelector((state: RootState): string => state.product.error);
   const cartItems: CartItem[] = useAppSelector((state: RootState): CartItem[] => state.cart.items);
   const [showPopup, setShowPopup] = useState<boolean>(false);
-  const product = products.find((p): boolean => p.id === Number(productId));
+  const product = products.find((product): boolean => product.id === Number(productId));
 
   const handleAddToCart = (product: Product): void => {
     const item = {
@@ -44,10 +44,8 @@ const ProductDetails = () => {
   };
 
   useEffect((): void => {
-    if (!products.length) {
-      dispatch(fetchProducts());
-    }
-    dispatch(fetchCartItems());
+    if (!products.length) dispatch(fetchProducts());
+    if (!cartItems.length) dispatch(fetchCartItems());
   }, []);
 
   const isProductInCart = (productId: number): boolean | 0 => cartItems.length && cartItems.some((item): boolean => item.id === productId);

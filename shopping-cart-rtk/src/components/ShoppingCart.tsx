@@ -28,7 +28,7 @@ const ShoppingCart: React.FC = () => {
   const tableHeaders = ["Image", "Product", "Price", "Quantity", "Total", "Remove"];
 
   useEffect((): void => {
-    dispatch(fetchCartItems());
+    if (!cartItems.length) dispatch(fetchCartItems());
   }, []);
 
   const handleQuantityChange = (index: number, id: number, newQuantity: number): void => {
@@ -61,9 +61,11 @@ const ShoppingCart: React.FC = () => {
               <CartTable>
                 <thead>
                   <tr>
-                    {tableHeaders.map((tableHeader) => (
-                      <th key={tableHeader}>{tableHeader}</th>
-                    ))}
+                    {tableHeaders.map(
+                      (tableHeader): JSX.Element => (
+                        <th key={tableHeader}>{tableHeader}</th>
+                      )
+                    )}
                   </tr>
                 </thead>
                 <tbody>

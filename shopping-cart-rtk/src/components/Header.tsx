@@ -28,7 +28,7 @@ const Header: React.FC = () => {
     const handleResize = (): void => {
       setIsMobile(window.innerWidth <= 768);
     };
-    dispatch(fetchCartItems());
+    if (!cartItems.length) dispatch(fetchCartItems());
     window.addEventListener("resize", handleResize);
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);

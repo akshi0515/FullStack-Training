@@ -32,8 +32,8 @@ const ProductList: React.FC = () => {
   const [showPopup, setShowPopup] = useState<boolean>(false);
 
   useEffect((): void => {
-    dispatch(fetchProducts());
-    dispatch(fetchCartItems());
+    if (!products.length) dispatch(fetchProducts());
+    if (!cartItems.length) dispatch(fetchCartItems());
   }, []);
 
   const handleAddToCart = (event: React.MouseEvent, product: Product): void => {
@@ -94,11 +94,11 @@ const ProductList: React.FC = () => {
                 </ProductPrice>
                 <ProductDescription>
                   {product.description.slice(0, 80)}...
-                  <DescriptionLink to={`/product/${product.id}`} onClick={(e): void => e.stopPropagation()}>
+                  <DescriptionLink to={`/product/${product.id}`} onClick={(event): void => event.stopPropagation()}>
                     Read More
                   </DescriptionLink>
                 </ProductDescription>
-                <AddToCartButton onClick={(e): void => handleCartButtonClick(e, product)}>
+                <AddToCartButton onClick={(event): void => handleCartButtonClick(event, product)}>
                   {isProductInCart(product.id) ? "Go to Cart" : "Add to Cart"}
                 </AddToCartButton>
               </ProductInfo>

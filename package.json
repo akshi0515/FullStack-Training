@@ -14,9 +14,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint shopping-cart/src/**/*.{js,ts,tsx}",
-    "lint:fix": "eslint --fix shopping-cart/src/**/*.{js,jsx,ts,tsx}",
-    "format": "prettier --write shopping-cart/src/**/*.{js,ts,tsx}",
+    "lint": "eslint shopping-cart*/src/**/*.{js,ts,tsx}",
+    "lint:fix": "eslint --fix shopping-cart*/src/**/*.{js,jsx,ts,tsx}",
+    "format": "prettier --write shopping-cart*/src/**/*.{js,ts,tsx}",
     "prepare": "husky install"
   },
   "devDependencies": {
