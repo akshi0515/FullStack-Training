@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 2rem;
-  background-color: #f8f9fa;
+  background-color: ${(props): string => props.theme.colors.background};
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -16,7 +16,7 @@ export const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: ${(props): string => props.theme.colors.white};
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 2rem;
@@ -53,7 +53,7 @@ export const Title = styled.h1`
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  color: #333;
+  color: ${(props): string => props.theme.colors.title};
 
   @media (min-width: 768px) {
     font-size: 2rem;
@@ -63,7 +63,7 @@ export const Title = styled.h1`
 export const Price = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
-  color: #e74c3c;
+  color: ${(props): string => props.theme.colors.priceColor};
   margin-bottom: 1rem;
 
   @media (min-width: 768px) {
@@ -80,7 +80,7 @@ export const Rating = styled.p`
 export const Description = styled.p`
   margin-bottom: 2rem;
   line-height: 1.6;
-  color: #555;
+  color: ${(props): string => props.theme.colors.textDark};
 `;
 
 export const ButtonContainer = styled.div`
@@ -109,20 +109,20 @@ const Button = styled.button`
 `;
 
 export const AddToCartButton = styled(Button)`
-  background-color: #3498db;
-  color: white;
+  background-color: ${(props): string => props.theme.colors.button.default};
+  color: ${(props): string => props.theme.colors.white};
 
   &:hover {
-    background-color: #2980b9;
+    background-color: ${(props): string => props.theme.colors.button.hover};
   }
 `;
 
 export const BuyNowButton = styled(Button)`
-  background-color: #2ecc71;
-  color: white;
+  background-color: ${(props): string => props.theme.colors.button.buyNow};
+  color: ${(props): string => props.theme.colors.white};
 
   &:hover {
-    background-color: #27ae60;
+    background-color: ${(props): string => props.theme.colors.button.buyNowHover};
   }
 `;
 
@@ -131,11 +131,11 @@ export const Popup = styled.div`
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #3498db;
-  color: white;
+  background-color: ${(props): string => props.theme.colors.popup};
+  color: ${(props): string => props.theme.colors.white};
   padding: 1rem 2rem;
   border-radius: 4px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px #0000001a;
   z-index: 1000;
   opacity: 0.9;
 

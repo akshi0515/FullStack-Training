@@ -1,28 +1,30 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AppContainer } from "./styles/App.styles";
-import store from "./store";
 import Header from "./components/Header";
-import Page404 from "./components/Page404";
-import ProductList from "./components/ProductList";
-import ShoppingCart from "./components/ShoppingCart";
-import ProductDetails from "./components/ProductDetials";
+import Page404 from "./pages/Page404";
+import ProductList from "./pages/ProductList";
+import ShoppingCart from "./pages/ShoppingCart";
+import ProductDetails from "./pages/ProductDetails";
+import LoginPage from "./pages/Login";
+import RegisterForm from "./pages/Signup";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./theme";
 
 const App: React.FC = () => (
-  <BrowserRouter>
-    <Provider store={store}>
-      <AppContainer>
-        <Header />
-        <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/cart" element={<ShoppingCart />} />
-          <Route path="/product/:productId" element={<ProductDetails />} />
-          <Route path="/*" element={<Page404 />} />
-        </Routes>
-      </AppContainer>
-    </Provider>
-  </BrowserRouter>
+  <AppContainer>
+    <ThemeProvider theme={theme}>
+      <Header />
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/cart" element={<ShoppingCart />} />
+        <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<RegisterForm />} />
+        <Route path="/*" element={<Page404 />} />
+      </Routes>
+    </ThemeProvider>
+  </AppContainer>
 );
 
 export default App;

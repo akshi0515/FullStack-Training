@@ -13,7 +13,7 @@ export const ProductListContainer = styled.div`
 `;
 
 export const ProductCard = styled.div`
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${(props) => props.theme.colors.border};
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -38,7 +38,7 @@ export const ProductInfo = styled.div`
 export const ProductTitle = styled.h3`
   font-size: 18px;
   margin: 0 0 10px;
-  color: #333333;
+  color: ${(props) => props.theme.colors.title};
   min-height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -58,7 +58,7 @@ export const StyledToolTip = styled(Tooltip)`
 export const ProductPrice = styled.p`
   font-size: 20px;
   font-weight: bold;
-  color: #e91e63;
+  color: ${(props) => props.theme.colors.priceColor};
   margin: 10px 0;
 `;
 
@@ -73,7 +73,7 @@ export const DescriptionLink = styled(Link)`
   color: #007bff;
   text-decoration: none;
   &:hover {
-    color: #0056b3;
+    color: ${(props) => props.theme.colors.description};
     text-decoration: none;
   }
 `;
@@ -90,8 +90,8 @@ export const Rating = styled.div`
 `;
 
 export const AddToCartButton = styled.button`
-  background-color: #4caf50;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.button.default};
+  color: ${(props) => props.theme.colors.white};
   border: none;
   padding: 10px 15px;
   cursor: pointer;
@@ -100,7 +100,7 @@ export const AddToCartButton = styled.button`
   border-radius: 4px;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: #45a049;
+    background-color: ${(props) => props.theme.colors.button.hover};
   }
 `;
 
@@ -114,8 +114,8 @@ export const Popup = styled.div`
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #4caf50;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.popup};
+  color: ${(props) => props.theme.colors.white};
   padding: 15px 20px;
   border-radius: 4px;
   z-index: 1000;

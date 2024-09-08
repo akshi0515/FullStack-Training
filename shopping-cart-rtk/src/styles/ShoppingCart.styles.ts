@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
-  border: 1px solid #dddddd;
+  border: 1px solid ${(props) => props.theme.colors.border};
   padding: 20px;
   margin-top: 80px;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: ${(props) => props.theme.colors.white};
+  color: ${(props) => props.theme.colors.textDark};
   max-width: 80%;
   margin-left: auto;
   margin-right: auto;
@@ -39,7 +39,7 @@ export const CartTable = styled.table`
     border-bottom: 1px solid #dddddd;
   }
   th {
-    background-color: #f2f2f2;
+    background-color: ${(props) => props.theme.colors.tableHeader};
     font-weight: bold;
   }
   @media (max-width: 768px) {
@@ -57,8 +57,8 @@ export const QuantityControl = styled.div`
 `;
 
 export const QuantityButton = styled.button`
-  background-color: #494d49;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.button.quantity};
+  color: ${(props) => props.theme.colors.white};
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -66,19 +66,19 @@ export const QuantityButton = styled.button`
   border-radius: 3px;
   transition: background-color 0.3s;
   &:hover {
-    background-color: #5a5e5a;
+    background-color: ${(props) => props.theme.colors.button.quantityHover};
   }
 `;
 
 export const RemoveButton = styled.button`
   border: none;
-  color: #ff4d4d;
+  color: ${(props) => props.theme.colors.button.remove};
   background-color: transparent;
   font-size: 20px;
   cursor: pointer;
   transition: color 0.3s;
   &:hover {
-    color: #ff0000;
+    color: ${(props) => props.theme.colors.button.removeHover};
   }
 `;
 
@@ -94,7 +94,7 @@ export const ProductImage = styled.img`
 export const CartTotals = styled.div`
   width: 30%;
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: ${(props) => props.theme.colors.background};
   border-radius: 5px;
   box-shadow: 0 2px 4px #0000001a;
   align-self: flex-start;
@@ -104,7 +104,7 @@ export const CartTotals = styled.div`
   }
   h3 {
     margin-bottom: 15px;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid ${(props) => props.theme.colors.border};
     padding-bottom: 10px;
   }
   div {
@@ -116,7 +116,7 @@ export const CartTotals = styled.div`
     font-weight: bold;
     font-size: 1.1em;
     margin-top: 10px;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid ${(props) => props.theme.colors.border};
     padding-top: 10px;
   }
 `;
@@ -124,7 +124,7 @@ export const CartTotals = styled.div`
 export const EmptyCartMessage = styled.div`
   text-align: center;
   padding: 50px;
-  color: #888888;
+  color: ${(props) => props.theme.colors.emptyCart};
   width: 90%;
   svg {
     margin-bottom: 20px;
@@ -138,14 +138,14 @@ export const CheckoutButton = styled.button`
   width: 100%;
   padding: 10px;
   margin-top: 15px;
-  background-color: #4caf50;
-  color: #ffffff;
+  background-color: ${(props) => props.theme.colors.button.default};
+  color: ${(props) => props.theme.colors.white};
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
   &:hover {
-    background-color: #45a049;
+    background-color: ${(props) => props.theme.colors.button.hover};
   }
 `;

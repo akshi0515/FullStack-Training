@@ -11,12 +11,8 @@ const initialState: ProductState = {
 };
 
 export const fetchProducts = createAsyncThunk("cart/fetchProducts", async (): Promise<Product[]> => {
-  try {
-    const response = await axios.get(productApi);
-    return response.data as Product[];
-  } catch (error: any) {
-    return error.message;
-  }
+  const response = await axios.get(productApi);
+  return response.data as Product[];
 });
 
 const productSlice = createSlice({
@@ -30,11 +26,11 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action): void => {
         state.loading = false;
-        state.items = action.payload;
+        state.items = action.payload as Product[];
       })
       .addCase(fetchProducts.rejected, (state, action): void => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message as string;
       });
   }
 });
